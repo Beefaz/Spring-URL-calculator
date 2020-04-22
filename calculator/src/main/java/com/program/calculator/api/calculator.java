@@ -26,12 +26,16 @@ public class calculator {
         } else if (Character.valueOf('*').equals(zenklas)) {
             return "Rezultatas: " + BigDecimal.valueOf(sk1).multiply(BigDecimal.valueOf(sk2), MathContext.UNLIMITED);
         } else if (Character.valueOf('/').equals(zenklas)) {
-            return "Rezultatas: " + BigDecimal.valueOf(sk1).divide(BigDecimal.valueOf(sk2), MathContext.UNLIMITED);
+            if (sk2 == 0) {
+                return "Dalyba iš 0 - negalima";
+            } else {
+                return "Rezultatas: " + BigDecimal.valueOf(sk1).divide(BigDecimal.valueOf(sk2), MathContext.UNLIMITED);
+            }
         }
-        return "Kažką ne taip įvedei!!!"+
-                "<BR><BR>Rašyk:"+
-                "<BR><BR>http://localhost:8080/skaiciuoti?sk1=<b>X</b>&sk2=<b>Y</b>&zenklas=<b>Z</b>"+
-                "<BR><BR><b>X</b>, <b>Y</b> - skaičiai"+
+        return "Kažką ne taip įvedei!!!" +
+                "<BR><BR>Rašyk:" +
+                "<BR><BR>http://localhost:8080/skaiciuoti?sk1=<b>X</b>&sk2=<b>Y</b>&zenklas=<b>Z</b>" +
+                "<BR><BR><b>X</b>, <b>Y</b> - skaičiai" +
                 "<BR><BR><b>Z</b> - norimas veiksmas (+, -, *, /)";
     }
 }
